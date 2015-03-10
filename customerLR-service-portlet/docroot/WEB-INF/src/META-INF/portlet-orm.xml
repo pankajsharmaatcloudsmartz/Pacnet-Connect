@@ -1,0 +1,866 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="com.pacnet.connect.model.impl.AccessLogModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="accessRequestId">
+				<column name="ACCESS_REQUEST_ID" />
+			</basic>
+			<basic name="facilityUserMappingId">
+				<column name="FACILITY_USER_MAPPING_ID" />
+			</basic>
+			<basic name="actualDateOfVisit">
+				<column name="ACTUAL_DATE_OF_VISIT" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="timeIn">
+				<column name="TIME_IN" />
+			</basic>
+			<basic name="timeOut">
+				<column name="TIME_OUT" />
+			</basic>
+			<basic name="note">
+				<column name="NOTE" />
+			</basic>
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.AccessRequestModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="facilityId">
+				<column name="FACILITY_ID" />
+			</basic>
+			<basic name="customerId">
+				<column name="CUSTOMER_ID" />
+			</basic>
+			<basic name="visitorId">
+				<column name="VISITOR_ID" />
+			</basic>
+			<basic name="accessRequestStatusId">
+				<column name="ACCESS_REQUEST_STATUS_ID" />
+			</basic>
+			<basic name="dateOfVisit">
+				<column name="DATE_OF_VISIT" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="tentativeTimeIn">
+				<column name="TENTATIVE_TIME_IN" />
+			</basic>
+			<basic name="tentativeTimeOut">
+				<column name="TENTATIVE_TIME_OUT" />
+			</basic>
+			<basic name="note">
+				<column name="NOTE" />
+			</basic>
+			<basic name="isExternalVisitor">
+				<column name="IS_EXTERNAL_VISITOR" />
+			</basic>
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="oneTimeAccess">
+				<column name="ONE_TIME_ACCESS" />
+			</basic>
+			<basic name="dateOfVisitGmt">
+				<column name="DATE_OF_VISIT_GMT" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="dateOfTimeOutGmt">
+				<column name="DATE_OF_TIME_OUT_GMT" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.AccessRequestFacilityServiceModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="accessRequestId">
+				<column name="ACCESS_REQUEST_ID" />
+			</basic>
+			<basic name="facilityServiceId">
+				<column name="FACILITY_SERVICE_ID" />
+			</basic>
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.AccessRequestNoteHistoryModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="accessRequestId">
+				<column name="ACCESS_REQUEST_ID" />
+			</basic>
+			<basic name="customerId">
+				<column name="CUSTOMER_ID" />
+			</basic>
+			<basic name="note">
+				<column name="NOTE" />
+			</basic>
+			<basic name="tableName">
+				<column name="TABLE_NAME" />
+			</basic>
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.AccessRequestStatusModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="name">
+				<column name="NAME" />
+			</basic>
+			<basic name="description">
+				<column name="DESCRIPTION" />
+			</basic>
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.FacilityModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="name">
+				<column name="NAME" />
+			</basic>
+			<basic name="address">
+				<column name="ADDRESS" />
+			</basic>
+			<basic name="phoneNumber">
+				<column name="PHONE_NUMBER" />
+			</basic>
+			<basic name="city">
+				<column name="CITY" />
+			</basic>
+			<basic name="stateId">
+				<column name="STATE_ID" />
+			</basic>
+			<basic name="countryId">
+				<column name="COUNTRY_ID" />
+			</basic>
+			<basic name="isThirdParty">
+				<column name="IS_THIRD_PARTY" />
+			</basic>
+			<basic name="managerId">
+				<column name="MANAGER_ID" />
+			</basic>
+			<basic name="escalationEmail">
+				<column name="ESCALATION_EMAIL" />
+			</basic>
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<basic name="timezone" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.FacilityAccessModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="name">
+				<column name="NAME" />
+			</basic>
+			<basic name="label">
+				<column name="LABEL" />
+			</basic>
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.FacilityAssignmentModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="customerId">
+				<column name="CUSTOMER_ID" />
+			</basic>
+			<basic name="faciltyId">
+				<column name="FACILITY_ID" />
+			</basic>
+			<basic name="facilityServiceId">
+				<column name="FACILITY_SERVICE_ID" />
+			</basic>
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.FacilityExternalVisitorModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="facilityId">
+				<column name="FACILITY_ID" />
+			</basic>
+			<basic name="accessRequestId">
+				<column name="ACCESS_REQUEST_ID" />
+			</basic>
+			<basic name="name">
+				<column name="NAME" />
+			</basic>
+			<basic name="mobileNumber">
+				<column name="MOBILE_NUMBER" />
+			</basic>
+			<basic name="email">
+				<column name="EMAIL" />
+			</basic>
+			<basic name="address">
+				<column name="ADDRESS" />
+			</basic>
+			<basic name="companyName">
+				<column name="COMPANY_NAME" />
+			</basic>
+			<basic name="documentType">
+				<column name="DOCUMENT_TYPE" />
+			</basic>
+			<basic name="documentId">
+				<column name="DOCUMENT_ID" />
+			</basic>
+			<basic name="remarks" />
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.FacilitySecurityOfficerMappingModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="faciltyId">
+				<column name="FACILITY_ID" />
+			</basic>
+			<basic name="securityOfficerUserId">
+				<column name="SECURITY_OFFICER_USER_ID" />
+			</basic>
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="securityOfficerUserUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.FacilityStaffMappingModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="facilityId">
+				<column name="FACILITY_ID" />
+			</basic>
+			<basic name="staffUserId">
+				<column name="STAFF_USER_ID" />
+			</basic>
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="staffUserUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.FacilityUserMappingModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="customerId">
+				<column name="CUSTOMER_ID" />
+			</basic>
+			<basic name="faciltyId">
+				<column name="FACILITY_ID" />
+			</basic>
+			<basic name="customerContactId">
+				<column name="CUSTOMER_CONTACT_ID" />
+			</basic>
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="nonPacnetUserId">
+				<column name="NON_PACNET_USER_ID" />
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="nonPacnetUserUuid" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.FacilityUserServiceModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="facilityUserMappingId">
+				<column name="FACILITY_USER_MAPPING_ID" />
+			</basic>
+			<basic name="facilityServiceId">
+				<column name="FACILITY_SERVICE_ID" />
+			</basic>
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.SMAAdminsModelImpl">
+		<attributes>
+			<id name="id" />
+			<basic name="userId">
+				<column name="USER_ID" />
+			</basic>
+			<basic name="radcheckId">
+				<column name="RADCHECK_ID" />
+			</basic>
+			<basic name="companyId">
+				<column name="COMPANY_ID" />
+			</basic>
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.SMACompaniesModelImpl">
+		<attributes>
+			<id name="id" />
+			<basic name="customerId">
+				<column name="CUSTOMER_ID" />
+			</basic>
+			<basic name="companyName" />
+			<basic name="domains" />
+			<basic name="groupName">
+				<column name="GROUPNAME" />
+			</basic>
+			<basic name="attribute" />
+			<basic name="op" />
+			<basic name="value" />
+			<basic name="maxUser" />
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.SMACompanyListModelImpl">
+		<attributes>
+			<id name="id" />
+			<basic name="adminUserId" />
+			<basic name="companyId">
+				<column name="COMPANY_ID" />
+			</basic>
+			<basic name="customerId">
+				<column name="CUSTOMER_ID" />
+			</basic>
+			<basic name="domains" />
+			<transient name="adminUserUuid" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.SMAEmailHistoryModelImpl">
+		<attributes>
+			<id name="id" />
+			<basic name="name" />
+			<basic name="historyType" />
+			<basic name="emailFrom" />
+			<basic name="emailTo" />
+			<basic name="emailTitle" />
+			<basic name="emailContent" />
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.SMARadacctModelImpl">
+		<attributes>
+			<id name="radAcctId">
+				<column name="RADACCTID" />
+			</id>
+			<basic name="radcheckId">
+				<column name="RADCHECK_ID" />
+			</basic>
+			<basic name="acctSessionId">
+				<column name="ACCTSESSIONID" />
+			</basic>
+			<basic name="realm">
+				<column name="REALM" />
+			</basic>
+			<basic name="acctStartTime">
+				<column name="ACCTSTARTTIME" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="acctStopTime">
+				<column name="ACCTSTOPTIME" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="acctSessionTime">
+				<column name="ACCTSESSIONTIME" />
+			</basic>
+			<basic name="acctterminateCause">
+				<column name="ACCTTERMINATECAUSE" />
+			</basic>
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.SMARadcheckModelImpl">
+		<attributes>
+			<id name="id" />
+			<basic name="companyId">
+				<column name="COMPANY_ID" />
+			</basic>
+			<basic name="username" />
+			<basic name="attribute" />
+			<basic name="op" />
+			<basic name="value" />
+			<basic name="isAdmin">
+				<column name="ISADMIN" />
+			</basic>
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.pacnet.connect.model.impl.SMAReservationModelImpl">
+		<attributes>
+			<id name="id" />
+			<basic name="name" />
+			<basic name="startDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="endDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="owner" />
+			<basic name="provision" />
+			<basic name="isActive">
+				<column name="ISACTIVE" />
+			</basic>
+			<basic name="createdOn">
+				<column name="CREATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="createdBy">
+				<column name="CREATED_BY" />
+			</basic>
+			<basic name="updatedOn">
+				<column name="UPDATED_ON" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="updatedBy">
+				<column name="UPDATED_BY" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="com.pacnet.connect.model.impl.AccessLogImpl" name="AccessLog">
+		<table name="Access_Log" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.AccessRequestImpl" name="AccessRequest">
+		<table name="Access_Request" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.AccessRequestFacilityServiceImpl" name="AccessRequestFacilityService">
+		<table name="Access_Request_Facility_Service" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.AccessRequestNoteHistoryImpl" name="AccessRequestNoteHistory">
+		<table name="Access_Request_Note_History" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.AccessRequestStatusImpl" name="AccessRequestStatus">
+		<table name="Access_Request_Status" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.FacilityImpl" name="Facility">
+		<table name="Facility" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.FacilityAccessImpl" name="FacilityAccess">
+		<table name="Facility_Service" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.FacilityAssignmentImpl" name="FacilityAssignment">
+		<table name="Facility_Assignment" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.FacilityExternalVisitorImpl" name="FacilityExternalVisitor">
+		<table name="Facility_External_Visitor" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.FacilitySecurityOfficerMappingImpl" name="FacilitySecurityOfficerMapping">
+		<table name="Facility_Security_Officer_Mapping" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.FacilityStaffMappingImpl" name="FacilityStaffMapping">
+		<table name="Facility_Staff_Mapping" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.FacilityUserMappingImpl" name="FacilityUserMapping">
+		<table name="Facility_User_Mapping" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.FacilityUserServiceImpl" name="FacilityUserService">
+		<table name="Facility_User_Service_Mapping" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.SMAAdminsImpl" name="SMAAdmins">
+		<table name="PA_SMA_admins" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.SMACompaniesImpl" name="SMACompanies">
+		<table name="PA_SMA_companies" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.SMACompanyListImpl" name="SMACompanyList">
+		<table name="v_i_sma_user_details" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.SMAEmailHistoryImpl" name="SMAEmailHistory">
+		<table name="PA_SMA_Email_History" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.SMARadacctImpl" name="SMARadacct">
+		<table name="PA_SMA_radacct" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.SMARadcheckImpl" name="SMARadcheck">
+		<table name="PA_SMA_radcheck" />
+		<attributes />
+	</entity>
+	<entity class="com.pacnet.connect.model.impl.SMAReservationImpl" name="SMAReservation">
+		<table name="PA_SMA_reservation" />
+		<attributes />
+	</entity>
+</entity-mappings>

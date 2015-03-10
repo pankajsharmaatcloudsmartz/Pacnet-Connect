@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="com.pacnet.connect.service.AccessLogLocalService" class="com.pacnet.connect.service.impl.AccessLogLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.AccessLogService" class="com.pacnet.connect.service.impl.AccessLogServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.AccessLogPersistence" class="com.pacnet.connect.service.persistence.AccessLogPersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.AccessRequestLocalService" class="com.pacnet.connect.service.impl.AccessRequestLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.AccessRequestService" class="com.pacnet.connect.service.impl.AccessRequestServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.AccessRequestPersistence" class="com.pacnet.connect.service.persistence.AccessRequestPersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.AccessRequestFacilityServiceLocalService" class="com.pacnet.connect.service.impl.AccessRequestFacilityServiceLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.AccessRequestFacilityServiceService" class="com.pacnet.connect.service.impl.AccessRequestFacilityServiceServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.AccessRequestFacilityServicePersistence" class="com.pacnet.connect.service.persistence.AccessRequestFacilityServicePersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.AccessRequestNoteHistoryLocalService" class="com.pacnet.connect.service.impl.AccessRequestNoteHistoryLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.AccessRequestNoteHistoryService" class="com.pacnet.connect.service.impl.AccessRequestNoteHistoryServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.AccessRequestNoteHistoryPersistence" class="com.pacnet.connect.service.persistence.AccessRequestNoteHistoryPersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.AccessRequestStatusLocalService" class="com.pacnet.connect.service.impl.AccessRequestStatusLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.AccessRequestStatusService" class="com.pacnet.connect.service.impl.AccessRequestStatusServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.AccessRequestStatusPersistence" class="com.pacnet.connect.service.persistence.AccessRequestStatusPersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.FacilityLocalService" class="com.pacnet.connect.service.impl.FacilityLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.FacilityService" class="com.pacnet.connect.service.impl.FacilityServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.FacilityPersistence" class="com.pacnet.connect.service.persistence.FacilityPersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.FacilityAccessLocalService" class="com.pacnet.connect.service.impl.FacilityAccessLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.FacilityAccessService" class="com.pacnet.connect.service.impl.FacilityAccessServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.FacilityAccessPersistence" class="com.pacnet.connect.service.persistence.FacilityAccessPersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.FacilityAssignmentLocalService" class="com.pacnet.connect.service.impl.FacilityAssignmentLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.FacilityAssignmentService" class="com.pacnet.connect.service.impl.FacilityAssignmentServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.FacilityAssignmentPersistence" class="com.pacnet.connect.service.persistence.FacilityAssignmentPersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.FacilityExternalVisitorLocalService" class="com.pacnet.connect.service.impl.FacilityExternalVisitorLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.FacilityExternalVisitorService" class="com.pacnet.connect.service.impl.FacilityExternalVisitorServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.FacilityExternalVisitorPersistence" class="com.pacnet.connect.service.persistence.FacilityExternalVisitorPersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.FacilitySecurityOfficerMappingLocalService" class="com.pacnet.connect.service.impl.FacilitySecurityOfficerMappingLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.FacilitySecurityOfficerMappingService" class="com.pacnet.connect.service.impl.FacilitySecurityOfficerMappingServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.FacilitySecurityOfficerMappingPersistence" class="com.pacnet.connect.service.persistence.FacilitySecurityOfficerMappingPersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.FacilityStaffMappingLocalService" class="com.pacnet.connect.service.impl.FacilityStaffMappingLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.FacilityStaffMappingService" class="com.pacnet.connect.service.impl.FacilityStaffMappingServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.FacilityStaffMappingPersistence" class="com.pacnet.connect.service.persistence.FacilityStaffMappingPersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.FacilityUserMappingLocalService" class="com.pacnet.connect.service.impl.FacilityUserMappingLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.FacilityUserMappingService" class="com.pacnet.connect.service.impl.FacilityUserMappingServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.FacilityUserMappingPersistence" class="com.pacnet.connect.service.persistence.FacilityUserMappingPersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.FacilityUserServiceLocalService" class="com.pacnet.connect.service.impl.FacilityUserServiceLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.FacilityUserServiceService" class="com.pacnet.connect.service.impl.FacilityUserServiceServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.FacilityUserServicePersistence" class="com.pacnet.connect.service.persistence.FacilityUserServicePersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.SMAAdminsLocalService" class="com.pacnet.connect.service.impl.SMAAdminsLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.SMAAdminsService" class="com.pacnet.connect.service.impl.SMAAdminsServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.SMAAdminsPersistence" class="com.pacnet.connect.service.persistence.SMAAdminsPersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.SMACompaniesLocalService" class="com.pacnet.connect.service.impl.SMACompaniesLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.SMACompaniesService" class="com.pacnet.connect.service.impl.SMACompaniesServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.SMACompaniesPersistence" class="com.pacnet.connect.service.persistence.SMACompaniesPersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.SMACompanyListLocalService" class="com.pacnet.connect.service.impl.SMACompanyListLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.SMACompanyListService" class="com.pacnet.connect.service.impl.SMACompanyListServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.SMACompanyListPersistence" class="com.pacnet.connect.service.persistence.SMACompanyListPersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.SMAEmailHistoryLocalService" class="com.pacnet.connect.service.impl.SMAEmailHistoryLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.SMAEmailHistoryService" class="com.pacnet.connect.service.impl.SMAEmailHistoryServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.SMAEmailHistoryPersistence" class="com.pacnet.connect.service.persistence.SMAEmailHistoryPersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.SMARadacctLocalService" class="com.pacnet.connect.service.impl.SMARadacctLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.SMARadacctService" class="com.pacnet.connect.service.impl.SMARadacctServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.SMARadacctPersistence" class="com.pacnet.connect.service.persistence.SMARadacctPersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.SMARadcheckLocalService" class="com.pacnet.connect.service.impl.SMARadcheckLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.SMARadcheckService" class="com.pacnet.connect.service.impl.SMARadcheckServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.SMARadcheckPersistence" class="com.pacnet.connect.service.persistence.SMARadcheckPersistenceImpl" parent="basePersistence" />
+	<bean id="com.pacnet.connect.service.SMAReservationLocalService" class="com.pacnet.connect.service.impl.SMAReservationLocalServiceImpl" />
+	<bean id="com.pacnet.connect.service.SMAReservationService" class="com.pacnet.connect.service.impl.SMAReservationServiceImpl" />
+	<bean id="com.pacnet.connect.service.persistence.SMAReservationPersistence" class="com.pacnet.connect.service.persistence.SMAReservationPersistenceImpl" parent="basePersistence" />
+</beans>

@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.pacnet.connect.model.AccessLog">
+		<field name="id" type="long" />
+		<field name="accessRequestId" type="long" />
+		<field name="facilityUserMappingId" type="long" />
+		<field name="actualDateOfVisit" type="Date" />
+		<field name="timeIn" type="long" />
+		<field name="timeOut" type="long" />
+		<field name="note" type="String" />
+		<field name="isActive" type="boolean" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.AccessRequest">
+		<field name="id" type="long" />
+		<field name="facilityId" type="long" />
+		<field name="customerId" type="long" />
+		<field name="visitorId" type="long" />
+		<field name="accessRequestStatusId" type="long" />
+		<field name="dateOfVisit" type="Date" />
+		<field name="tentativeTimeIn" type="long" />
+		<field name="tentativeTimeOut" type="long" />
+		<field name="note" type="String" />
+		<field name="isExternalVisitor" type="boolean" />
+		<field name="isActive" type="boolean" />
+		<field name="oneTimeAccess" type="boolean" />
+		<field name="dateOfVisitGmt" type="Date" />
+		<field name="dateOfTimeOutGmt" type="Date" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.AccessRequestFacilityService">
+		<field name="id" type="long" />
+		<field name="accessRequestId" type="long" />
+		<field name="facilityServiceId" type="long" />
+		<field name="isActive" type="boolean" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.AccessRequestNoteHistory">
+		<field name="id" type="long" />
+		<field name="accessRequestId" type="long" />
+		<field name="customerId" type="long" />
+		<field name="note" type="String" />
+		<field name="tableName" type="String" />
+		<field name="isActive" type="boolean" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.AccessRequestStatus">
+		<field name="id" type="long" />
+		<field name="name" type="String" />
+		<field name="description" type="long" />
+		<field name="isActive" type="boolean" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.Facility">
+		<field name="id" type="long" />
+		<field name="name" type="String" />
+		<field name="address" type="String" />
+		<field name="phoneNumber" type="String" />
+		<field name="city" type="String" />
+		<field name="stateId" type="long" />
+		<field name="countryId" type="long" />
+		<field name="isThirdParty" type="int" />
+		<field name="managerId" type="long" />
+		<field name="escalationEmail" type="String" />
+		<field name="isActive" type="boolean" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+		<field name="timezone" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.FacilityAccess">
+		<field name="id" type="long" />
+		<field name="name" type="String" />
+		<field name="label" type="String" />
+		<field name="isActive" type="boolean" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.FacilityAssignment">
+		<field name="id" type="long" />
+		<field name="customerId" type="long" />
+		<field name="faciltyId" type="long" />
+		<field name="facilityServiceId" type="long" />
+		<field name="isActive" type="boolean" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.FacilityExternalVisitor">
+		<field name="id" type="long" />
+		<field name="facilityId" type="long" />
+		<field name="accessRequestId" type="long" />
+		<field name="name" type="String" />
+		<field name="mobileNumber" type="String" />
+		<field name="email" type="String" />
+		<field name="address" type="String" />
+		<field name="companyName" type="String" />
+		<field name="documentType" type="String" />
+		<field name="documentId" type="String" />
+		<field name="remarks" type="String" />
+		<field name="isActive" type="boolean" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.FacilitySecurityOfficerMapping">
+		<field name="id" type="long" />
+		<field name="faciltyId" type="long" />
+		<field name="securityOfficerUserId" type="long" />
+		<field name="isActive" type="boolean" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.FacilityStaffMapping">
+		<field name="id" type="long" />
+		<field name="facilityId" type="long" />
+		<field name="staffUserId" type="long" />
+		<field name="isActive" type="boolean" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.FacilityUserMapping">
+		<field name="id" type="long" />
+		<field name="customerId" type="long" />
+		<field name="faciltyId" type="long" />
+		<field name="customerContactId" type="long" />
+		<field name="isActive" type="boolean" />
+		<field name="nonPacnetUserId" type="long" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.FacilityUserService">
+		<field name="id" type="long" />
+		<field name="facilityUserMappingId" type="long" />
+		<field name="facilityServiceId" type="long" />
+		<field name="isActive" type="boolean" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.SMAAdmins">
+		<field name="id" type="long" />
+		<field name="userId" type="long" />
+		<field name="radcheckId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="isActive" type="int" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.SMACompanies">
+		<field name="id" type="long" />
+		<field name="customerId" type="long" />
+		<field name="companyName" type="String" />
+		<field name="domains" type="String" />
+		<field name="groupName" type="String" />
+		<field name="attribute" type="String" />
+		<field name="op" type="String" />
+		<field name="value" type="String" />
+		<field name="maxUser" type="int" />
+		<field name="isActive" type="int" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.SMACompanyList">
+		<field name="id" type="String" />
+		<field name="adminUserId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="customerId" type="long" />
+		<field name="domains" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.SMAEmailHistory">
+		<field name="id" type="long" />
+		<field name="name" type="String" />
+		<field name="historyType" type="int" />
+		<field name="emailFrom" type="String" />
+		<field name="emailTo" type="String" />
+		<field name="emailTitle" type="String" />
+		<field name="emailContent" type="String" />
+		<field name="isActive" type="int" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.SMARadacct">
+		<field name="radAcctId" type="long" />
+		<field name="radcheckId" type="long" />
+		<field name="acctSessionId" type="String" />
+		<field name="realm" type="String" />
+		<field name="acctStartTime" type="Date" />
+		<field name="acctStopTime" type="Date" />
+		<field name="acctSessionTime" type="long" />
+		<field name="acctterminateCause" type="String" />
+		<field name="isActive" type="int" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.SMARadcheck">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="username" type="String" />
+		<field name="attribute" type="String" />
+		<field name="op" type="String" />
+		<field name="value" type="String" />
+		<field name="isAdmin" type="int" />
+		<field name="isActive" type="int" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+	</model>
+	<model name="com.pacnet.connect.model.SMAReservation">
+		<field name="id" type="long" />
+		<field name="name" type="String" />
+		<field name="startDate" type="Date" />
+		<field name="endDate" type="Date" />
+		<field name="owner" type="String" />
+		<field name="provision" type="int" />
+		<field name="isActive" type="int" />
+		<field name="createdOn" type="Date" />
+		<field name="createdBy" type="String" />
+		<field name="updatedOn" type="Date" />
+		<field name="updatedBy" type="String" />
+	</model>
+</model-hints>

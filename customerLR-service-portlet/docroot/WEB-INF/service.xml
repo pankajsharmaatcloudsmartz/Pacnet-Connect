@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.1.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_1_0.dtd">
+<service-builder package-path="com.pacnet.connect">
+	<author>CloudSmartz</author>
+	<namespace>CP</namespace>
+	
+	<entity name="Facility" local-service="true" remote-service="true" table="Facility">
+		<column name="id" type="long" primary="true" id-type="identity" db-name="ID" />
+		<column name="name" type="String" db-name="Name"/>
+		<column name="address" type="String" db-name="Address" />
+		<column name="phoneNumber" type="String" db-name="Phone_Number"/>
+		<column name="city" type="String" db-name="City"/>
+		
+		<column name="stateId" type="long" db-name="State_ID" />
+		<column name="countryId" type="long" db-name="Country_ID" />
+		<column name="isThirdParty" type="int" db-name="Is_Third_Party" />
+		<column name="managerId" type="long" db-name="Manager_ID" />
+		<column name="escalationEmail" type="String" db-name="Escalation_Email"/>
+		<column name="isActive" type="boolean" db-name="IsActive" />
+		
+		<column name="createdOn" type="Date" db-name="Created_On" />
+		<column name="createdBy" type="String" db-name="Created_By" />
+		<column name="updatedOn" type="Date" db-name="Updated_On" />
+		<column name="updatedBy" type="String" db-name="Updated_By" />
+		<column name="timezone" type="String" db-name="timezone" />
+		
+		<!-- Order -->		
+		<finder name="FacilityName" return-type="Collection">
+			<finder-column name="name" />
+		</finder>
+		
+		<finder name="FacilityByCountryId" return-type="Collection">
+			<finder-column name="countryId" />
+		</finder>
+		<finder name="FacilityByManagerId" return-type="Collection">
+   			<finder-column name="managerId" />
+ 		 </finder>
+	</entity>
+	
+	<!-- Facility Service -->
+	<entity name="FacilityAccess" local-service="true" remote-service="true" table="Facility_Service">
+		<column name="id" type="long" primary="true" id-type="identity" db-name="ID" />
+		<column name="name" type="String" db-name="Name"/>
+		<column name="label" type="String" db-name="Label"/>
+		<column name="isActive" type="boolean" db-name="IsActive" />
+		
+		<column name="createdOn" type="Date" db-name="Created_On" />
+		<column name="createdBy" type="String" db-name="Created_By" />
+		<column name="updatedOn" type="Date" db-name="Updated_On" />
+		<column name="updatedBy" type="String" db-name="Updated_By" />
+		
+		<!-- Finder methods -->		
+		<finder name="FacilityServiceName" return-type="Collection">
+			<finder-column name="name" />
+		</finder>
+	</entity>
+	
+	<!-- Access Request -->
+	<entity name="AccessRequest" local-service="true" remote-service="true" table="Access_Request">
+		<column name="id" type="long" primary="true" id-type="identity" db-name="ID" />
+		<column name="facilityId" type="long" db-name="Facility_ID" />		
+		<column name="customerId" type="long" db-name="Customer_ID" />
+		<column name="visitorId" type="long" db-name="visitor_ID" />
+		<column name="accessRequestStatusId" type="long" db-name="Access_Request_Status_ID" />
+		<column name="dateOfVisit" type="Date" db-name="Date_Of_Visit" />
+		<column name="tentativeTimeIn" type="long" db-name="Tentative_Time_In" />
+		<column name="tentativeTimeOut" type="long" db-name="Tentative_Time_Out" />
+		<column name="note" type="String" db-name="Note" />
+		<column name="isExternalVisitor" type="boolean" db-name="Is_External_Visitor" />		
+		<column name="isActive" type="boolean" db-name="IsActive" />
+		<column name="oneTimeAccess" type="boolean" db-name="One_Time_Access" />
+		<column name="dateOfVisitGmt" type="Date" db-name="Date_Of_Visit_Gmt" />
+		<column name="dateOfTimeOutGmt" type="Date" db-name="Date_Of_Time_Out_Gmt" />
+		<column name="createdOn" type="Date" db-name="Created_On" />
+		<column name="createdBy" type="String" db-name="Created_By" />
+		<column name="updatedOn" type="Date" db-name="Updated_On" />
+		<column name="updatedBy" type="String" db-name="Updated_By" />   
+		
+		<!-- Relationship -->
+		<!-- <column name="facilities" type="Collection" entity="Facility" mapping-key="facilityId"/> -->
+		
+		<!-- Finder methods	 -->	
+		<finder name="AccessRequestByFacility" return-type="Collection">
+			<finder-column name="facilityId" />
+		</finder>
+		<finder name="AccessRequestByCustomer" return-type="Collection">
+			<finder-column name="customerId" />
+		</finder>
+		<finder name="AccessRequestByVisitor" return-type="Collection">
+			<finder-column name="visitorId" />
+		</finder> 
+		<!-- <reference package-path="com.pacnet.connect" entity="Facility" ></reference> -->
+	</entity>
+	
+	<!-- Facility Security Officer Mapping -->
+	<entity name="FacilitySecurityOfficerMapping" local-service="true" remote-service="true" table="Facility_Security_Officer_Mapping">
+		<column name="id" type="long" primary="true" id-type="identity" db-name="ID" />		
+		<column name="faciltyId" type="long" db-name="Facility_ID" />		
+		<column name="securityOfficerUserId" type="long" db-name="Security_Officer_User_ID"/>
+		<column name="isActive" type="boolean" db-name="IsActive" />
+		
+		<column name="createdOn" type="Date" db-name="Created_On" />
+		<column name="createdBy" type="String" db-name="Created_By" />
+		<column name="updatedOn" type="Date" db-name="Updated_On" />
+		<column name="updatedBy" type="String" db-name="Updated_By" />    
+		<!-- Finder methods -->
+		
+		<finder name="FacilitySecurityByFacility" return-type="Collection">
+			<finder-column name="faciltyId" />
+		</finder>
+		<finder name="FacilitySecurityBySecurityOfficerUserId" return-type="Collection">
+   			<finder-column name="securityOfficerUserId" />
+  		</finder>
+				  
+		<!-- <reference package-path="com.pacnet.connect" entity="Facility" ></reference>  
+		<reference package-path="com.pacnet.connect" entity="FacilityService"></reference> -->
+	</entity>
+	
+	<!-- Facility Staff Mapping -->
+	<entity name="FacilityStaffMapping" local-service="true" remote-service="true" table="Facility_Staff_Mapping">
+		<column name="id" type="long" primary="true" id-type="identity" db-name="ID" />		
+		<column name="facilityId" type="long" db-name="Facility_ID" />		
+		<column name="staffUserId" type="long" db-name="Staff_User_ID"/>
+		<column name="isActive" type="boolean" db-name="IsActive" />
+		
+		<column name="createdOn" type="Date" db-name="Created_On" />
+		<column name="createdBy" type="String" db-name="Created_By" />
+		<column name="updatedOn" type="Date" db-name="Updated_On" />
+		<column name="updatedBy" type="String" db-name="Updated_By" />    
+		<!-- Finder methods -->
+		
+		<finder name="FacilityStaffByFacility" return-type="Collection">
+			<finder-column name="facilityId" />
+		</finder>
+		<finder name="FacilityStaffByStaffUserId" return-type="Collection">
+   			<finder-column name="staffUserId" />
+  		</finder>		
+	</entity>
+	
+	<!-- 
+	Facility Assignment -->
+	<entity name="FacilityAssignment" local-service="true" remote-service="true" table="Facility_Assignment">
+		<column name="id" type="long" primary="true" id-type="identity" db-name="ID" />
+		<column name="customerId" type="long" db-name="Customer_ID" />
+		<column name="faciltyId" type="long" db-name="Facility_ID" />		
+		<column name="facilityServiceId" type="long" db-name="Facility_Service_ID"/>
+		<column name="isActive" type="boolean" db-name="IsActive" />
+		
+		<column name="createdOn" type="Date" db-name="Created_On" />
+		<column name="createdBy" type="String" db-name="Created_By" />
+		<column name="updatedOn" type="Date" db-name="Updated_On" />
+		<column name="updatedBy" type="String" db-name="Updated_By" />    
+		<!-- Finder methods -->
+		
+		<finder name="FacilityAssignmentByCustomerId" return-type="Collection">
+			<finder-column name="customerId" />
+		</finder>
+		<finder name="FacilityAssignmentByFacility" return-type="Collection">
+			<finder-column name="faciltyId" />
+		</finder>
+		<finder name="FacilityAssignmentByService" return-type="Collection">
+			<finder-column name="facilityServiceId" />
+		</finder>  
+		<!-- <reference package-path="com.pacnet.connect" entity="Facility" ></reference>  
+		<reference package-path="com.pacnet.connect" entity="FacilityService"></reference> -->
+	</entity>
+	
+	<!-- Facility User Mapping -->
+	<entity name="FacilityUserMapping" local-service="true" remote-service="true" table="Facility_User_Mapping">
+		<column name="id" type="long" primary="true" id-type="identity" db-name="ID" />
+		<column name="customerId" type="long" db-name="Customer_ID" />
+		<column name="faciltyId" type="long" db-name="Facility_ID" />		
+		<column name="customerContactId" type="long" db-name="Customer_Contact_ID"/>
+		<column name="isActive" type="boolean" db-name="IsActive" />
+		<column name="nonPacnetUserId" type="long" db-name="non_pacnet_user_ID"/>
+		<column name="createdOn" type="Date" db-name="Created_On" />
+		<column name="createdBy" type="String" db-name="Created_By" />
+		<column name="updatedOn" type="Date" db-name="Updated_On" />
+		<column name="updatedBy" type="String" db-name="Updated_By" />
+		<!-- Finder methods -->
+		
+		<finder name="FacilityUserMappingByCustomerId" return-type="Collection">
+			<finder-column name="customerId" />
+		</finder>
+		<finder name="FacilityUserMappingByFacility" return-type="Collection">
+			<finder-column name="faciltyId" />
+		</finder>    
+		<finder name="FacilityByCustomerContact" return-type="Collection">
+            <finder-column name="customerId"></finder-column>
+            <finder-column name="customerContactId"></finder-column>
+        </finder>
+        <finder name="FumByFacilityCustomerContact" return-type="Collection">
+            <finder-column name="customerId"></finder-column>
+            <finder-column name="customerContactId"></finder-column>
+            <finder-column name="faciltyId" />
+        </finder>
+        <finder name="FacilityByNonPacnetUserId" return-type="Collection">
+            <finder-column name="customerId"></finder-column>
+            <finder-column name="nonPacnetUserId"></finder-column>
+        </finder>
+        <finder name="FacilityByFacilityAndNonPacnetUserId" return-type="Collection">
+            <finder-column name="customerId"></finder-column>
+            <finder-column name="nonPacnetUserId"></finder-column>
+            <finder-column name="faciltyId" />
+        </finder>
+		<!-- <reference package-path="com.pacnet.connect" entity="Facility" ></reference>  -->
+	</entity>
+	
+	<!-- Facility User Service -->
+	<entity name="FacilityUserService" local-service="true" remote-service="true" table="Facility_User_Service_Mapping">
+		<column name="id" type="long" primary="true" id-type="identity" db-name="ID" />
+		<column name="facilityUserMappingId" type="long" db-name="Facility_User_Mapping_ID" />
+		<column name="facilityServiceId" type="long" db-name="Facility_Service_ID" />
+		<column name="isActive" type="boolean" db-name="IsActive" />
+		
+		<column name="createdOn" type="Date" db-name="Created_On" />
+		<column name="createdBy" type="String" db-name="Created_By" />
+		<column name="updatedOn" type="Date" db-name="Updated_On" />
+		<column name="updatedBy" type="String" db-name="Updated_By" />
+		<!-- Finder methods -->
+		
+		<finder name="FacilityUserServiceByFacilityUserMapping" return-type="Collection">
+			<finder-column name="facilityUserMappingId" />
+		</finder>
+		<finder name="FacilityUserMappingByFacilityService" return-type="Collection">
+			<finder-column name="facilityServiceId" />
+		</finder>
+		<finder name="FusByServiceUserMapping" return-type="Collection">
+			<finder-column name="facilityServiceId" />
+			<finder-column name="facilityUserMappingId" />
+		</finder>   
+		<!-- <reference package-path="com.pacnet.connect" entity="FacilityService" ></reference>
+		<reference package-path="com.pacnet.connect" entity="FacilityUserMapping" ></reference>   -->
+	</entity>
+	
+	<!-- Access Log -->
+	<entity name="AccessLog" local-service="true" remote-service="true" table="Access_Log">
+		<column name="id" type="long" primary="true" id-type="identity" db-name="ID" />
+		<column name="accessRequestId" type="long" db-name="Access_Request_ID" />
+		<column name="facilityUserMappingId" type="long" db-name="Facility_User_Mapping_ID" />
+		<column name="actualDateOfVisit" type="Date" db-name="Actual_Date_OF_Visit" />
+		<column name="timeIn" type="long" db-name="Time_In" />
+		<column name="timeOut" type="long" db-name="Time_Out" />
+		<column name="note" type="String" db-name="Note" />		
+		<column name="isActive" type="boolean" db-name="IsActive" />
+		<column name="createdOn" type="Date" db-name="Created_On" />
+		<column name="createdBy" type="String" db-name="Created_By" />
+		<column name="updatedOn" type="Date" db-name="Updated_On" />
+		<column name="updatedBy" type="String" db-name="Updated_By" /> 
+		
+		<!-- Relationship -->
+		<!-- <column name="accessRequests" type="Collection" entity="AccressRequest" mapping-key="accessRequestId"/> -->
+		<!-- Finder methods -->
+		
+		<finder name="AccessLogByAccessRequest" return-type="Collection">
+			<finder-column name="accessRequestId" />
+		</finder>
+		<finder name="AccessLogByFacilityUserMapping" return-type="Collection">
+			<finder-column name="facilityUserMappingId" />
+		</finder>
+		<finder name="AccessLogByDateOfVisit" return-type="Collection">
+			<finder-column name="actualDateOfVisit" />
+		</finder>
+		   
+		<!-- <reference package-path="com.pacnet.connect" entity="AccessRequest" ></reference>		
+		<reference package-path="com.pacnet.connect" entity="FacilityUserMapping" ></reference> -->
+	</entity>
+	
+	<!-- Access Request Facility Service -->
+	 
+	<entity name="AccessRequestFacilityService" local-service="true" remote-service="true" table="Access_Request_Facility_Service">
+		<column name="id" type="long" primary="true" id-type="identity" db-name="ID" />
+		<column name="accessRequestId" type="long" db-name="Access_Request_ID" />
+		<column name="facilityServiceId" type="long" db-name="Facility_Service_ID" />
+		<column name="isActive" type="boolean" db-name="IsActive" />
+		
+		<column name="createdOn" type="Date" db-name="Created_On" />
+		<column name="createdBy" type="String" db-name="Created_By" />
+		<column name="updatedOn" type="Date" db-name="Updated_On" />
+		<column name="updatedBy" type="String" db-name="Updated_By" />  
+		
+		<!-- Finder methods -->
+		
+		<finder name="AccessRequestFacilityServiceByAccessRequest" return-type="Collection">
+			<finder-column name="accessRequestId" />
+		</finder>
+		<finder name="AccessRequestFacilityServiceByFacilityService" return-type="Collection">
+			<finder-column name="facilityServiceId" />
+		</finder>  
+		<!-- <reference package-path="com.pacnet.connect" entity="AccessRequest" ></reference>
+		<reference package-path="com.pacnet.connect" entity="FacilityService" ></reference>   -->
+	</entity>
+	
+	<!-- Access Request Status Seatrvice -->
+	 
+	<entity name="AccessRequestStatus" local-service="true" remote-service="true" table="Access_Request_Status">
+		<column name="id" type="long" primary="true" id-type="identity" db-name="ID" />
+		<column name="name" type="String" db-name="Name" />
+		<column name="description" type="long" db-name="Description" />
+		<column name="isActive" type="boolean" db-name="IsActive" />
+		
+		<column name="createdOn" type="Date" db-name="Created_On" />
+		<column name="createdBy" type="String" db-name="Created_By" />
+		<column name="updatedOn" type="Date" db-name="Updated_On" />
+		<column name="updatedBy" type="String" db-name="Updated_By" />  
+		
+		<!-- Finder methods -->
+		
+	</entity>
+	
+	<!-- Access Request Status Seatrvice -->
+	 
+	<entity name="AccessRequestNoteHistory" local-service="true" remote-service="true" table="Access_Request_Note_History">
+		<column name="id" type="long" primary="true" id-type="identity" db-name="ID" />
+		<column name="accessRequestId" type="long" db-name="Access_Request_ID" />
+		<column name="customerId" type="long" db-name="Customer_ID" />
+		<column name="note" type="String" db-name="Note" />
+		<column name="tableName" type="String" db-name="Table_Name" />
+		
+		<column name="isActive" type="boolean" db-name="IsActive" />		
+		<column name="createdOn" type="Date" db-name="Created_On" />
+		<column name="createdBy" type="String" db-name="Created_By" />
+		<column name="updatedOn" type="Date" db-name="Updated_On" />
+		<column name="updatedBy" type="String" db-name="Updated_By" />  
+		
+		<!-- Finder methods -->
+		<finder name="AccessRequestNoteHistoryByAccReqId" return-type="Collection">
+			<finder-column name="accessRequestId" />
+		</finder>
+		<finder name="AccessRequestNoteHistoryByAccReqIdAndCustId" return-type="Collection">
+			<finder-column name="accessRequestId" />
+			<finder-column name="customerId" />
+		</finder>
+		<finder name="AccessRequestNoteHistoryByAccReqCustTable" return-type="Collection">
+			<finder-column name="accessRequestId" />
+			<finder-column name="customerId" />
+			<finder-column name="tableName" />
+		</finder>
+		
+	</entity>
+	
+	<!-- Facility External Visitor -->
+	<entity name="FacilityExternalVisitor" local-service="true" remote-service="true" table="Facility_External_Visitor">
+		<column name="id" type="long" primary="true" id-type="identity" db-name="ID" />		
+		<column name="facilityId" type="long" db-name="Facility_ID" />		
+		<column name="accessRequestId" type="long" db-name="Access_Request_ID"/>
+		<column name="name" type="String" db-name="Name"/>
+		<column name="mobileNumber" type="String" db-name="Mobile_Number"/>
+		<column name="email" type="String" db-name="Email"/>
+		<column name="address" type="String" db-name="Address"/>
+		<column name="companyName" type="String" db-name="Company_Name"/>
+		<column name="documentType" type="String" db-name="document_type"/>
+		<column name="documentId" type="String" db-name="document_Id"/>
+		<column name="remarks" type="String" db-name="remarks"/>
+		
+		<column name="isActive" type="boolean" db-name="IsActive" />		
+		<column name="createdOn" type="Date" db-name="Created_On" />
+		<column name="createdBy" type="String" db-name="Created_By" />
+		<column name="updatedOn" type="Date" db-name="Updated_On" />
+		<column name="updatedBy" type="String" db-name="Updated_By" />    
+		<!-- Finder methods -->
+		
+		<finder name="FacilityExternalVisitorByFacility" return-type="Collection">
+			<finder-column name="facilityId" />
+		</finder>
+		<finder name="FacilityExternalVisitorByAccessRequest" return-type="Collection">
+   			<finder-column name="accessRequestId" />
+  		</finder>		
+	</entity>
+	
+	
+	<!--			 Secure Mobile Access			 -->
+	
+	<!-- SMA Companies -->
+	<entity name="SMACompanies" local-service="true" table="PA_SMA_companies">
+        <column primary="true" name="id" type="long" id-type="identity" db-name="id"></column>
+        <column name="customerId" type="long" db-name="customer_id"></column>
+        <column name="companyName" type="String" db-name="companyName"></column>
+        <column name="domains" type="String" db-name="domains"></column>
+        <column name="groupName" type="String" db-name="groupname"></column>
+        <column name="attribute" type="String" db-name="attribute"></column>
+        <column name="op" type="String" db-name="op"></column>
+        <column name="value" type="String" db-name="value"></column>
+        <column name="maxUser" type="int" db-name="maxUser"></column>
+        <column name="isActive" type="int" db-name="IsActive"></column>
+        <column name="createdOn" type="Date" db-name="Created_On"></column>
+        <column name="createdBy" type="String" db-name="Created_By"></column>
+        <column name="updatedOn" type="Date" db-name="Updated_On"></column>
+        <column name="updatedBy" type="String" db-name="Updated_By"></column>
+        
+        <!-- Finder methods -->
+        
+        <finder name="GetAllCompanies" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="createdBy" />
+		</finder>
+		
+		<finder name="SMACompanyListByCustomerId" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="customerId" />
+		</finder>
+		
+		<finder name="SMACompanyListByDomains" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="domains" />
+		</finder>
+		
+		<finder name="SMACompanyListByGroupName" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="groupName" />
+		</finder>
+		
+		<finder name="SMACompanyListByCustomerIdDomains" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="customerId" />
+			<finder-column name="domains" />
+		</finder>
+		
+    </entity>
+    
+    <!-- SMA Users -->
+    <entity name="SMARadcheck" local-service="true" table="PA_SMA_radcheck">
+        <column primary="true" name="id" type="long"  id-type="identity" db-name="id"></column>
+        <column name="companyId" type="long" db-name="company_id"></column>
+        <column name="username" type="String" db-name="username"></column>
+        <column name="attribute" type="String" db-name="attribute"></column>
+        <column name="op" type="String" db-name="op"></column>
+        <column name="value" type="String" db-name="value"></column>
+        <column name="isAdmin" type="int" db-name="IsAdmin"></column>
+        <column name="isActive" type="int" db-name="IsActive"></column>
+        <column name="createdOn" type="Date" db-name="Created_On"></column>
+        <column name="createdBy" type="String" db-name="Created_By"></column>
+        <column name="updatedOn" type="Date" db-name="Updated_On"></column>
+        <column name="updatedBy" type="String" db-name="Updated_By"></column>
+        
+        <!-- Finder methods -->
+		
+		<finder name="SMAUserListByCompanyId" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="companyId" />
+		</finder>
+		
+		<finder name="SMAUserListByIsAdmin" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="isAdmin" />
+		</finder>
+		
+		<finder name="SMAUserListByIsAdminCompanyId" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="isAdmin" />
+			<finder-column name="companyId" />
+		</finder>		
+		
+    </entity>
+    
+    <!-- SMA Company's Admins -->
+    <entity name="SMAAdmins" local-service="true" table="PA_SMA_admins">
+        <column primary="true" name="id" type="long" id-type="identity" db-name="id"></column>
+        <column name="userId" type="long" db-name="user_id"></column>
+        <column name="radcheckId" type="long" db-name="radcheck_id"></column>
+        <column name="companyId" type="long" db-name="company_id"></column>
+        <column name="isActive" type="int" db-name="IsActive"></column>
+        <column name="createdOn" type="Date" db-name="Created_On"></column>
+        <column name="createdBy" type="String" db-name="Created_By"></column>
+        <column name="updatedOn" type="Date" db-name="Updated_On"></column>
+        <column name="updatedBy" type="String" db-name="Updated_By"></column>
+        
+        <!-- Finder methods -->
+        
+        <finder name="SMAAdminsListByCompanyId" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="companyId" />
+		</finder>
+		
+		<finder name="SMAAdminsListByUserId" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="userId" />
+		</finder>
+		
+		<finder name="SMAAdminsListByRadcheckId" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="radcheckId" />
+		</finder>
+		
+		<finder name="SMAAdminsListByRadcheckIdUserIdCompanyId" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="radcheckId" />
+			<finder-column name="userId" />
+			<finder-column name="companyId" />
+		</finder>
+		
+   </entity>
+    
+    <!-- SMA Reserved Domains -->
+    <entity name="SMAReservation" local-service="true" table="PA_SMA_reservation">
+        <column primary="true" name="id" type="long" id-type="identity" db-name="id"></column>
+        <column name="name" type="String" db-name="name"></column>
+        <column name="startDate" type="Date" db-name="startDate"></column>
+        <column name="endDate" type="Date" db-name="endDate"></column>
+        <column name="owner" type="String" db-name="owner"></column>
+        <column name="provision" type="int" db-name="provision"></column>
+        <column name="isActive" type="int" db-name="IsActive"></column>
+        <column name="createdOn" type="Date" db-name="Created_On"></column>
+        <column name="createdBy" type="String" db-name="Created_By"></column>
+        <column name="updatedOn" type="Date" db-name="Updated_On"></column>
+        <column name="updatedBy" type="String" db-name="Updated_By"></column>
+        
+        <!-- Finder methods -->
+        
+        <finder name="SMADomainsListByCreatedBy" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="createdBy" />
+		</finder>
+		
+		<finder name="SMADomainsListByName" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="name" />
+		</finder>
+		
+		<finder name="SMADomainsListByOwner" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="owner" />
+		</finder>
+		
+		<finder name="SMADomainsListByStartDate" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="startDate" />
+		</finder>
+		
+		<finder name="SMADomainsListByEndDate" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="endDate" />
+		</finder>
+		
+		<finder name="SMADomainsListByProvision" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="provision" />
+		</finder>
+		
+    </entity>
+    
+    <!-- SMA Email Notification History -->
+    <entity name="SMAEmailHistory" local-service="true" table="PA_SMA_Email_History">
+        <column primary="true" name="id" type="long" id-type="identity" db-name="id"></column>
+        <column name="name" type="String" db-name="name"></column>
+        <column name="historyType" type="int" db-name="historyType"></column>
+        <column name="emailFrom" type="String" db-name="emailFrom"></column>
+        <column name="emailTo" type="String" db-name="emailTo"></column>
+        <column name="emailTitle" type="String" db-name="emailTitle"></column>
+        <column name="emailContent" type="String" db-name="emailContent"></column>
+        <column name="isActive" type="int" db-name="IsActive"></column>
+        <column name="createdOn" type="Date" db-name="Created_On"></column>
+        <column name="createdBy" type="String" db-name="Created_By"></column>
+        <column name="updatedOn" type="Date" db-name="Updated_On"></column>
+        <column name="updatedBy" type="String" db-name="Updated_By"></column>
+    </entity>
+
+    <!-- SMA User's Logged In Activities -->
+    <entity name="SMARadacct" local-service="true" table="PA_SMA_radacct" cache-enabled="false" >
+        <column primary="true" name="radAcctId" type="long" id-type="identity" db-name="RadAcctId"></column>
+        <column name="radcheckId" type="long" db-name="radcheck_id" ></column>
+        <column name="acctSessionId" type="String" db-name="AcctSessionId"></column>
+        <column name="realm" type="String" db-name="Realm"></column>
+        <column name="acctStartTime" type="Date" db-name="AcctStartTime"></column>
+        <column name="acctStopTime" type="Date" db-name="AcctStopTime"></column>
+        <column name="acctSessionTime" type="long" db-name="AcctSessionTime"></column>
+        <column name="acctterminateCause" type="String" db-name="AcctTerminateCause"></column>
+        <column name="isActive" type="int" db-name="IsActive"></column>
+        <column name="createdOn" type="Date" db-name="Created_On"></column>
+        <column name="createdBy" type="String" db-name="Created_By"></column>
+        <column name="updatedOn" type="Date" db-name="Updated_On"></column>
+        <column name="updatedBy" type="String" db-name="Updated_By"></column>
+        
+        <!-- Finder methods -->
+        
+        <finder name="SMAActivityListByRadcheckId" return-type="Collection">
+			<finder-column name="isActive" />
+			<finder-column name="radcheckId" />
+		</finder>
+        
+    </entity>
+    
+     <!-- SMA View -->
+    <entity name="SMACompanyList" local-service="true" table="v_i_sma_user_details" cache-enabled="false" >
+        <column primary="true" name="id" type="String" db-name="id"></column>
+        <column name="adminUserId" type="long" db-name="adminUserId" ></column>
+        <column name="companyId" type="long" db-name="company_id"></column>
+        <column name="customerId" type="long" db-name="customer_id"></column>
+        <column name="domains" type="String" db-name="domains"></column>
+        
+        <!-- Finder methods -->
+        
+        <finder name="SMACompanyListByAdminUserId" return-type="Collection">
+			<finder-column name="adminUserId" />
+		</finder>
+		
+		<finder name="SMACompanyListByCompanyId" return-type="Collection">
+			<finder-column name="companyId" />
+		</finder>
+		
+		<finder name="SMACompanyListByCustomerId" return-type="Collection">
+			<finder-column name="customerId" />
+		</finder>
+		
+		<finder name="SMACompanyListByDomains" return-type="Collection">
+			<finder-column name="domains" />
+		</finder>
+        
+    </entity>
+	
+</service-builder>

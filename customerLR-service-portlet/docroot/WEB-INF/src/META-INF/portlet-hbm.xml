@@ -1,0 +1,338 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="com.pacnet.connect.model.AccessLog" />
+	<import class="com.pacnet.connect.model.AccessRequest" />
+	<import class="com.pacnet.connect.model.AccessRequestFacilityService" />
+	<import class="com.pacnet.connect.model.AccessRequestNoteHistory" />
+	<import class="com.pacnet.connect.model.AccessRequestStatus" />
+	<import class="com.pacnet.connect.model.Facility" />
+	<import class="com.pacnet.connect.model.FacilityAccess" />
+	<import class="com.pacnet.connect.model.FacilityAssignment" />
+	<import class="com.pacnet.connect.model.FacilityExternalVisitor" />
+	<import class="com.pacnet.connect.model.FacilitySecurityOfficerMapping" />
+	<import class="com.pacnet.connect.model.FacilityStaffMapping" />
+	<import class="com.pacnet.connect.model.FacilityUserMapping" />
+	<import class="com.pacnet.connect.model.FacilityUserService" />
+	<import class="com.pacnet.connect.model.SMAAdmins" />
+	<import class="com.pacnet.connect.model.SMACompanies" />
+	<import class="com.pacnet.connect.model.SMACompanyList" />
+	<import class="com.pacnet.connect.model.SMAEmailHistory" />
+	<import class="com.pacnet.connect.model.SMARadacct" />
+	<import class="com.pacnet.connect.model.SMARadcheck" />
+	<import class="com.pacnet.connect.model.SMAReservation" />
+	<class name="com.pacnet.connect.model.impl.AccessLogImpl" table="Access_Log">
+		<cache usage="read-write" />
+		<id name="id" column="ID" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="accessRequestId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Access_Request_ID" />
+		<property name="facilityUserMappingId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Facility_User_Mapping_ID" />
+		<property name="actualDateOfVisit" type="org.hibernate.type.TimestampType" column="Actual_Date_OF_Visit" />
+		<property name="timeIn" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Time_In" />
+		<property name="timeOut" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Time_Out" />
+		<property name="note" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Note" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.BooleanType" column="IsActive" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.AccessRequestImpl" table="Access_Request">
+		<cache usage="read-write" />
+		<id name="id" column="ID" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="facilityId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Facility_ID" />
+		<property name="customerId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Customer_ID" />
+		<property name="visitorId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="visitor_ID" />
+		<property name="accessRequestStatusId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Access_Request_Status_ID" />
+		<property name="dateOfVisit" type="org.hibernate.type.TimestampType" column="Date_Of_Visit" />
+		<property name="tentativeTimeIn" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Tentative_Time_In" />
+		<property name="tentativeTimeOut" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Tentative_Time_Out" />
+		<property name="note" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Note" />
+		<property name="isExternalVisitor" type="com.liferay.portal.dao.orm.hibernate.BooleanType" column="Is_External_Visitor" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.BooleanType" column="IsActive" />
+		<property name="oneTimeAccess" type="com.liferay.portal.dao.orm.hibernate.BooleanType" column="One_Time_Access" />
+		<property name="dateOfVisitGmt" type="org.hibernate.type.TimestampType" column="Date_Of_Visit_Gmt" />
+		<property name="dateOfTimeOutGmt" type="org.hibernate.type.TimestampType" column="Date_Of_Time_Out_Gmt" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.AccessRequestFacilityServiceImpl" table="Access_Request_Facility_Service">
+		<cache usage="read-write" />
+		<id name="id" column="ID" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="accessRequestId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Access_Request_ID" />
+		<property name="facilityServiceId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Facility_Service_ID" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.BooleanType" column="IsActive" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.AccessRequestNoteHistoryImpl" table="Access_Request_Note_History">
+		<cache usage="read-write" />
+		<id name="id" column="ID" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="accessRequestId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Access_Request_ID" />
+		<property name="customerId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Customer_ID" />
+		<property name="note" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Note" />
+		<property name="tableName" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Table_Name" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.BooleanType" column="IsActive" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.AccessRequestStatusImpl" table="Access_Request_Status">
+		<cache usage="read-write" />
+		<id name="id" column="ID" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Name" />
+		<property name="description" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Description" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.BooleanType" column="IsActive" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.FacilityImpl" table="Facility">
+		<cache usage="read-write" />
+		<id name="id" column="ID" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Name" />
+		<property name="address" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Address" />
+		<property name="phoneNumber" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Phone_Number" />
+		<property name="city" type="com.liferay.portal.dao.orm.hibernate.StringType" column="City" />
+		<property name="stateId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="State_ID" />
+		<property name="countryId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Country_ID" />
+		<property name="isThirdParty" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="Is_Third_Party" />
+		<property name="managerId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Manager_ID" />
+		<property name="escalationEmail" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Escalation_Email" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.BooleanType" column="IsActive" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+		<property name="timezone" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.FacilityAccessImpl" table="Facility_Service">
+		<cache usage="read-write" />
+		<id name="id" column="ID" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Name" />
+		<property name="label" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Label" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.BooleanType" column="IsActive" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.FacilityAssignmentImpl" table="Facility_Assignment">
+		<cache usage="read-write" />
+		<id name="id" column="ID" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="customerId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Customer_ID" />
+		<property name="faciltyId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Facility_ID" />
+		<property name="facilityServiceId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Facility_Service_ID" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.BooleanType" column="IsActive" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.FacilityExternalVisitorImpl" table="Facility_External_Visitor">
+		<cache usage="read-write" />
+		<id name="id" column="ID" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="facilityId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Facility_ID" />
+		<property name="accessRequestId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Access_Request_ID" />
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Name" />
+		<property name="mobileNumber" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Mobile_Number" />
+		<property name="email" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Email" />
+		<property name="address" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Address" />
+		<property name="companyName" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Company_Name" />
+		<property name="documentType" type="com.liferay.portal.dao.orm.hibernate.StringType" column="document_type" />
+		<property name="documentId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="document_Id" />
+		<property name="remarks" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.BooleanType" column="IsActive" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.FacilitySecurityOfficerMappingImpl" table="Facility_Security_Officer_Mapping">
+		<cache usage="read-write" />
+		<id name="id" column="ID" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="faciltyId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Facility_ID" />
+		<property name="securityOfficerUserId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Security_Officer_User_ID" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.BooleanType" column="IsActive" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.FacilityStaffMappingImpl" table="Facility_Staff_Mapping">
+		<cache usage="read-write" />
+		<id name="id" column="ID" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="facilityId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Facility_ID" />
+		<property name="staffUserId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Staff_User_ID" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.BooleanType" column="IsActive" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.FacilityUserMappingImpl" table="Facility_User_Mapping">
+		<cache usage="read-write" />
+		<id name="id" column="ID" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="customerId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Customer_ID" />
+		<property name="faciltyId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Facility_ID" />
+		<property name="customerContactId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Customer_Contact_ID" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.BooleanType" column="IsActive" />
+		<property name="nonPacnetUserId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="non_pacnet_user_ID" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.FacilityUserServiceImpl" table="Facility_User_Service_Mapping">
+		<cache usage="read-write" />
+		<id name="id" column="ID" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="facilityUserMappingId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Facility_User_Mapping_ID" />
+		<property name="facilityServiceId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="Facility_Service_ID" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.BooleanType" column="IsActive" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.SMAAdminsImpl" table="PA_SMA_admins">
+		<cache usage="read-write" />
+		<id name="id" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="user_id" />
+		<property name="radcheckId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="radcheck_id" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="company_id" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="IsActive" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.SMACompaniesImpl" table="PA_SMA_companies">
+		<cache usage="read-write" />
+		<id name="id" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="customerId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="customer_id" />
+		<property name="companyName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="domains" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="groupName" type="com.liferay.portal.dao.orm.hibernate.StringType" column="groupname" />
+		<property name="attribute" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="op" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="value" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="maxUser" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="IsActive" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.SMACompanyListImpl" table="v_i_sma_user_details">
+		<id name="id" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="adminUserId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="company_id" />
+		<property name="customerId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="customer_id" />
+		<property name="domains" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.SMAEmailHistoryImpl" table="PA_SMA_Email_History">
+		<cache usage="read-write" />
+		<id name="id" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="historyType" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="emailFrom" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="emailTo" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="emailTitle" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="emailContent" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="IsActive" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.SMARadacctImpl" table="PA_SMA_radacct">
+		<id name="radAcctId" column="RadAcctId" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="radcheckId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="radcheck_id" />
+		<property name="acctSessionId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="AcctSessionId" />
+		<property name="realm" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Realm" />
+		<property name="acctStartTime" type="org.hibernate.type.TimestampType" column="AcctStartTime" />
+		<property name="acctStopTime" type="org.hibernate.type.TimestampType" column="AcctStopTime" />
+		<property name="acctSessionTime" type="com.liferay.portal.dao.orm.hibernate.LongType" column="AcctSessionTime" />
+		<property name="acctterminateCause" type="com.liferay.portal.dao.orm.hibernate.StringType" column="AcctTerminateCause" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="IsActive" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.SMARadcheckImpl" table="PA_SMA_radcheck">
+		<cache usage="read-write" />
+		<id name="id" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="company_id" />
+		<property name="username" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="attribute" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="op" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="value" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="isAdmin" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="IsAdmin" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="IsActive" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+	</class>
+	<class name="com.pacnet.connect.model.impl.SMAReservationImpl" table="PA_SMA_reservation">
+		<cache usage="read-write" />
+		<id name="id" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="startDate" type="org.hibernate.type.TimestampType" />
+		<property name="endDate" type="org.hibernate.type.TimestampType" />
+		<property name="owner" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="provision" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="isActive" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="IsActive" />
+		<property name="createdOn" type="org.hibernate.type.TimestampType" column="Created_On" />
+		<property name="createdBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Created_By" />
+		<property name="updatedOn" type="org.hibernate.type.TimestampType" column="Updated_On" />
+		<property name="updatedBy" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Updated_By" />
+	</class>
+</hibernate-mapping>

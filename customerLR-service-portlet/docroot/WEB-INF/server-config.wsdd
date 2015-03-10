@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	<globalConfiguration>
+		<parameter name="adminPassword" value="admin" />
+		<parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl" />
+		<parameter name="sendXsiTypes" value="true" />
+		<parameter name="sendMultiRefs" value="true" />
+		<parameter name="sendXMLDeclaration" value="true" />
+		<parameter name="axis.sendMinimizedElements" value="true" />
+		<requestFlow>
+			<handler type="java:org.apache.axis.handlers.JWSHandler">
+				<parameter name="scope" value="session" />
+			</handler>
+			<handler type="java:org.apache.axis.handlers.JWSHandler">
+				<parameter name="scope" value="request" />
+				<parameter name="extension" value=".jwr" />
+			</handler>
+		</requestFlow>
+	</globalConfiguration>
+	<handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder" />
+	<handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper" />
+	<handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler" />
+	<transport name="http">
+		<requestFlow>
+			<handler type="URLMapper" />
+			<handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler" />
+		</requestFlow>
+	</transport>
+	<transport name="local">
+		<responseFlow>
+			<handler type="LocalResponder" />
+		</responseFlow>
+	</transport>
+	<service name="Plugin_CP_AccessLogService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.pacnet.connect.service.http.AccessLogServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="AccessLogServiceSoap" />
+		<parameter name="wsdlServiceElement" value="AccessLogServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_CP_AccessLogService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.connect.pacnet.com" />
+	</service>
+	<service name="Plugin_CP_AccessRequestFacilityServiceService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.pacnet.connect.service.http.AccessRequestFacilityServiceServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="AccessRequestFacilityServiceServiceSoap" />
+		<parameter name="wsdlServiceElement" value="AccessRequestFacilityServiceServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_CP_AccessRequestFacilityServiceService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.connect.pacnet.com" />
+	</service>
+	<service name="Plugin_CP_AccessRequestService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.pacnet.connect.service.http.AccessRequestServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="AccessRequestServiceSoap" />
+		<parameter name="wsdlServiceElement" value="AccessRequestServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_CP_AccessRequestService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.connect.pacnet.com" />
+	</service>
+	<service name="Plugin_CP_FacilityAccessService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.pacnet.connect.service.http.FacilityAccessServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="FacilityAccessServiceSoap" />
+		<parameter name="wsdlServiceElement" value="FacilityAccessServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_CP_FacilityAccessService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.connect.pacnet.com" />
+	</service>
+	<service name="Plugin_CP_FacilityAssignmentService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.pacnet.connect.service.http.FacilityAssignmentServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="FacilityAssignmentServiceSoap" />
+		<parameter name="wsdlServiceElement" value="FacilityAssignmentServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_CP_FacilityAssignmentService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.connect.pacnet.com" />
+	</service>
+	<service name="Plugin_CP_FacilityService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.pacnet.connect.service.http.FacilityServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="FacilityServiceSoap" />
+		<parameter name="wsdlServiceElement" value="FacilityServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_CP_FacilityService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.connect.pacnet.com" />
+	</service>
+	<service name="Plugin_CP_FacilityUserMappingService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.pacnet.connect.service.http.FacilityUserMappingServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="FacilityUserMappingServiceSoap" />
+		<parameter name="wsdlServiceElement" value="FacilityUserMappingServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_CP_FacilityUserMappingService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.connect.pacnet.com" />
+	</service>
+	<service name="Plugin_CP_FacilityUserServiceService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.pacnet.connect.service.http.FacilityUserServiceServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="FacilityUserServiceServiceSoap" />
+		<parameter name="wsdlServiceElement" value="FacilityUserServiceServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_CP_FacilityUserServiceService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.connect.pacnet.com" />
+	</service>
+</deployment>
